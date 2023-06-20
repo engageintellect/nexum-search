@@ -49,6 +49,7 @@ export default function Home() {
       };
 
       const record = await pb.collection("searches").create(data);
+      console.log("search records added to pocketbase...");
     } catch (err) {
       console.log("err:", err);
       setLoading(false);
