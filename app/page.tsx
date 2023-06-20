@@ -3,6 +3,9 @@ import { useState } from "react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import PocketBase from "pocketbase";
+
+const searchHistory: string[] = [];
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -31,6 +34,21 @@ export default function Home() {
       const json = await result.json();
       setResult(json.data);
       setLoading(false);
+      searchHistory.push("hi");
+    } catch (err) {
+      console.log("err:", err);
+      setLoading(false);
+    }
+
+    try {
+      // TODO: MOVE THIS TO THE SERVER
+      const pb = new PocketBase("http://45.56.88.245:8090");
+      const data = {
+        query: query,
+        result: result,
+      };
+
+      const record = await pb.collection("searches").create(data);
     } catch (err) {
       console.log("err:", err);
       setLoading(false);
@@ -76,6 +94,15 @@ export default function Home() {
             ""
           )}
         </div>
+
+        {searchHistory.length > 0 ? (
+          <div className="mb-10">
+            <h2 className="text-2xl font-semibold">Search History</h2>
+            <div className="flex flex-col gap-2">{JSON.stringify(result)}</div>
+          </div>
+        ) : (
+          ""
+        )}
 
         {/* consider removing this button from the UI once the embeddings are created ... */}
         <button className="btn btn-info" onClick={createIndexAndEmbeddings}>
