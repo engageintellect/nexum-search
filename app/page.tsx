@@ -5,7 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PocketBase from "pocketbase";
 
-const searchHistory: string[] = [];
+// const searchHistory: string[] = [];
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -34,7 +34,7 @@ export default function Home() {
       const json = await result.json();
       setResult(json.data);
       setLoading(false);
-      searchHistory.push("hi");
+      // searchHistory.push("hi");
     } catch (err) {
       console.log("err:", err);
       setLoading(false);
@@ -95,14 +95,14 @@ export default function Home() {
           )}
         </div>
 
-        {searchHistory.length > 0 ? (
+        {/* {searchHistory.length > 0 ? (
           <div className="mb-10">
             <h2 className="text-2xl font-semibold">Search History</h2>
             <div className="flex flex-col gap-2">{JSON.stringify(result)}</div>
           </div>
         ) : (
           ""
-        )}
+        )} */}
 
         {/* consider removing this button from the UI once the embeddings are created ... */}
         <button className="btn btn-info" onClick={createIndexAndEmbeddings}>
