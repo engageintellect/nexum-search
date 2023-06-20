@@ -39,26 +39,34 @@ export default function Home() {
   return (
     <div>
       <Nav />
-
-      <div className="flex justify-center">
-        <div className="text-6xl font-semibold">
-          Ne<span className="text-purple-500">x</span>um
+      <div className="hero bg-base-200 py-20">
+        <div className="hero-content text-center">
+          <div className="max-w-md">
+            <div className="text-6xl font-semibold">
+              Ne<span className="text-purple-500">x</span>um
+            </div>
+            <p className="py-6">
+              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+              excepturi exercitationem quasi.
+            </p>
+            <div className="flex gap-2 w-full">
+              <input
+                className="input border-primary w-full"
+                placeholder="search for anything..."
+                onChange={(e) => setQuery(e.target.value)}
+              />
+              <button className="btn btn-primary" onClick={sendQuery}>
+                Submit
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <main className="min-h-screen flex flex-col items-center max-w-3xl mx-auto border rounded shadow-md my-10 p-10">
-        <div className="flex gap-2 w-full">
-          <input
-            className="input border-primary w-full"
-            placeholder="search for anything..."
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button className="btn btn-primary" onClick={sendQuery}>
-            Submit
-          </button>
-        </div>
+      <div className="flex justify-center"></div>
 
-        <div className="my-10">
+      <main className="min-h-screen flex flex-col items-center max-w-3xl mx-auto border rounded shadow-md -my-10 p-10 bg-base-100">
+        <div className="mb-10">
           {loading && <ArrowPathIcon className="h-10 w-10 animate-spin" />}
           {result ? (
             <div className="">
