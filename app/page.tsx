@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -35,27 +37,44 @@ export default function Home() {
     }
   }
   return (
-    <main className="flex flex-col items-center justify-between p-24 max-w-5xl mx-auto">
-      <div className="flex gap-2">
-        <input
-          className="input border-primary w-full"
-          placeholder="search for anything..."
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button className="btn btn-primary" onClick={sendQuery}>
-          Submit
+    <div>
+      <Nav />
+
+      <div className="flex justify-center">
+        <div className="text-6xl font-semibold">
+          Ne<span className="text-purple-500">x</span>um
+        </div>
+      </div>
+
+      <main className="min-h-screen flex flex-col items-center max-w-3xl mx-auto border rounded shadow-md my-10 p-10">
+        <div className="flex gap-2 w-full">
+          <input
+            className="input border-primary w-full"
+            placeholder="search for anything..."
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button className="btn btn-primary" onClick={sendQuery}>
+            Submit
+          </button>
+        </div>
+
+        <div className="my-10">
+          {loading && <ArrowPathIcon className="h-10 w-10 animate-spin" />}
+          {result ? (
+            <div className="">
+              <div className="">{result && <p>{result}</p>}</div>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+
+        {/* consider removing this button from the UI once the embeddings are created ... */}
+        <button className="btn btn-info" onClick={createIndexAndEmbeddings}>
+          Create index and embeddings
         </button>
-      </div>
-
-      <div className="my-10">
-        {loading && <ArrowPathIcon className="h-10 w-10 animate-spin" />}
-        {result && <p>{result}</p>}
-      </div>
-
-      {/* consider removing this button from the UI once the embeddings are created ... */}
-      <button className="btn btn-outline" onClick={createIndexAndEmbeddings}>
-        Create index and embeddings
-      </button>
-    </main>
+      </main>
+      <Footer />
+    </div>
   );
 }
