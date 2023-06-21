@@ -4,12 +4,13 @@ import { ArrowPathIcon } from "@heroicons/react/24/solid";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PocketBase from "pocketbase";
+import Image from "next/image";
 
 // const searchHistory: string[] = [];
 
 export default function Home() {
   const [query, setQuery] = useState("");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState({ text: "", link: "" });
   const [loading, setLoading] = useState(false);
 
   async function getPages() {
@@ -41,7 +42,7 @@ export default function Home() {
   }
   async function sendQuery() {
     if (!query) return;
-    setResult("");
+    setResult({ text: "", link: "" });
     setLoading(true);
     try {
       const result = await fetch("/api/read", {
@@ -76,13 +77,13 @@ export default function Home() {
   return (
     <div>
       <Nav />
-      <div className="hero bg-base-200 py-20">
+      <div className="hero bg-gradient-to-b from-purple-900 to-slate-800 py-20">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <div className="text-6xl font-semibold">
-              Ne<span className="text-purple-500">x</span>um Search
+            <div className="text-6xl font-semibold text-white">
+              Ne<span className="text-purple-500">x</span>um
             </div>
-            <p className="py-6">
+            <p className="py-6 text-white">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
               excepturi exercitationem quasi.
             </p>
@@ -102,12 +103,31 @@ export default function Home() {
 
       <div className="flex justify-center"></div>
 
-      <main className="min-h-screen flex flex-col items-center max-w-3xl mx-auto border rounded shadow-md -my-10 p-10 bg-base-100">
+      <main className="min-h-screen flex flex-col items-center max-w-3xl mx-auto border border-primary rounded shadow-lg -my-10 p-2 sm:p-10 bg-base-100">
         <div className="mb-10">
-          {loading && <ArrowPathIcon className="h-10 w-10 animate-spin" />}
-          {result ? (
-            <div className="">
-              <div className="">{result && <p>{result}</p>}</div>
+          {loading && <ArrowPathIcon className="h-20 w-20 animate-spin" />}
+          {result.text ? (
+            <div className="chat chat-start">
+              <div className="chat-image avatar">
+                <div className="w-10 rounded-full shadow-md">
+                  <Image
+                    src="https://github.com/engageintellect.png"
+                    width={200}
+                    height={200}
+                    alt="avatar"
+                  />
+                </div>
+              </div>
+              <div className="chat-header">
+                Robot
+                {/* <time className="text-xs opacity-50">{new Date}</time> */}
+              </div>
+              <div className="chat-bubble p-4">
+                {result.text && <div>{result.text}</div>}
+              </div>
+              <div className="chat-footer opacity-50 mt-5">
+                {result.link && <div>{result.link}</div>}
+              </div>
             </div>
           ) : (
             ""
@@ -126,11 +146,11 @@ export default function Home() {
         {/* consider removing this button from the UI once the embeddings are created ... */}
 
         <div className="flex gap-2">
-          <button className="btn btn-info" onClick={createIndexAndEmbeddings}>
+          <button className="btn " onClick={createIndexAndEmbeddings}>
             Index Docs
           </button>
 
-          <button className="btn btn-info" onClick={getPages}>
+          <button className="btn " onClick={getPages}>
             Get Pages
           </button>
         </div>

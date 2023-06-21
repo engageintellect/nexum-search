@@ -8,6 +8,7 @@ specifiers:
   '@types/react-dom': 18.2.4
   autoprefixer: 10.4.14
   daisyui: ^3.1.1
+  dotenv: ^16.3.1
   eslint: 8.41.0
   eslint-config-next: 13.4.4
   langchain: ^0.0.84
@@ -28,6 +29,7 @@ dependencies:
   '@types/react-dom': 18.2.4
   autoprefixer: 10.4.14_postcss@8.4.23
   daisyui: 3.1.1_postcss@8.4.23
+  dotenv: 16.3.1
   eslint: 8.41.0
   eslint-config-next: 13.4.4_opaykosi7ysrbskpnffskmbrki
   langchain: 0.0.84_wcaaf4cp3zl5hk2i2gyn76pf7y
@@ -868,6 +870,11 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: 2.0.3
+    dev: false
+
+  /dotenv/16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
+    engines: {node: '>=12'}
     dev: false
 
   /electron-to-chromium/1.4.434:

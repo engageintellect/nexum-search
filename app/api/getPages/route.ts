@@ -5,7 +5,7 @@ import path from "path";
 
 export async function GET() {
   try {
-    const pb = new PocketBase(process.env.POCKETBASE_URL);
+    const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE_URL);
     const projects = await pb.collection("projects").getFullList({
       sort: "-updated",
       expand: "likes",
