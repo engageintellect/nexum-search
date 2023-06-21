@@ -11,6 +11,23 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
+
+  async function getPages() {
+    try {
+      const testing = await fetch("/api/getPages", {
+        method: "GET",
+      });
+      const responseText = await testing.text();
+      console.log("Response:", responseText);
+
+      const json = await testing.json();
+      console.log("from client");
+      console.log("result: ", json);
+    } catch (err) {
+      console.log("err:", err);
+    }
+  }
+
   async function createIndexAndEmbeddings() {
     try {
       const result = await fetch("/api/setup", {
@@ -55,6 +72,7 @@ export default function Home() {
       setLoading(false);
     }
   }
+
   return (
     <div>
       <Nav />
@@ -62,7 +80,7 @@ export default function Home() {
         <div className="hero-content text-center">
           <div className="max-w-md">
             <div className="text-6xl font-semibold">
-              Ne<span className="text-purple-500">x</span>um
+              Ne<span className="text-purple-500">x</span>um Search
             </div>
             <p className="py-6">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
@@ -106,9 +124,16 @@ export default function Home() {
         )} */}
 
         {/* consider removing this button from the UI once the embeddings are created ... */}
-        <button className="btn btn-info" onClick={createIndexAndEmbeddings}>
-          Create index and embeddings
-        </button>
+
+        <div className="flex gap-2">
+          <button className="btn btn-info" onClick={createIndexAndEmbeddings}>
+            Index Docs
+          </button>
+
+          <button className="btn btn-info" onClick={getPages}>
+            Get Pages
+          </button>
+        </div>
       </main>
       <Footer />
     </div>

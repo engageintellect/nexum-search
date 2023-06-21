@@ -1,2 +1,2 @@
-export const indexName = "nexum-chatgpt";
+export const indexName = "nexum-test-gpt";
 export const timeout = 80000;
