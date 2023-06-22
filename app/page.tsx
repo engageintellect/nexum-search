@@ -58,20 +58,20 @@ export default function Home() {
       setLoading(false);
     }
 
-    try {
-      // TODO: MOVE THIS TO THE SERVER
-      const pb = new PocketBase("http://45.56.88.245:8090");
-      const data = {
-        query: query,
-        result: result, // This line may need modification
-      };
+    // try {
+    //   // TODO: MOVE THIS TO THE SERVER
+    //   const pb = new PocketBase("http://45.56.88.245:8090");
+    //   const data = {
+    //     query: query,
+    //     result: result, // This line may need modification
+    //   };
 
-      const record = await pb.collection("searches").create(data);
-      console.log("search records added to pocketbase...");
-    } catch (err) {
-      console.log("err:", err);
-      setLoading(false);
-    }
+    //   const record = await pb.collection("searches").create(data);
+    //   console.log("search records added to pocketbase...");
+    // } catch (err) {
+    //   console.log("err:", err);
+    //   setLoading(false);
+    // }
   }
 
   return (
