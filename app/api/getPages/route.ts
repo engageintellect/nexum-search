@@ -18,7 +18,7 @@ export async function GET() {
     }
 
     // Iterate through each project and save as Markdown file
-    const savedFiles = [];
+    const savedFiles: string[] = [];
     for (const project of projects) {
       console.log("project:", project);
       const filePath = path.join(documentsDir, `${project.name}.md`);
