@@ -11,13 +11,11 @@ export async function GET() {
       expand: "likes",
     });
 
-    // Create the /documents directory if it doesn't exist
     const documentsDir = path.join(process.cwd(), "documents");
     if (!fs.existsSync(documentsDir)) {
       fs.mkdirSync(documentsDir);
     }
 
-    // Iterate through each project and save as Markdown file
     const savedFiles: string[] = [];
     for (const project of projects) {
       console.log("project:", project);
@@ -26,7 +24,7 @@ export async function GET() {
         .map(([key, value]) => `${key}: ${JSON.stringify(value)}`)
         .join("\n")}\n---\n\n${project.description}`;
 
-      fs.writeFileSync(filePath, content);
+      await fs.promises.writeFile(filePath, content);
       console.log(`Markdown file saved for project: ${project.collectionId}`);
 
       savedFiles.push(filePath);
@@ -42,5 +40,6 @@ export async function GET() {
     return NextResponse.json(responseData);
   } catch (err) {
     console.log("Error:", err);
+    return NextResponse.error();
   }
 }
