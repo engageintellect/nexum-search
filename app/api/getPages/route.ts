@@ -40,6 +40,9 @@ export async function GET() {
     return NextResponse.json(responseData);
   } catch (err) {
     console.log("Error:", err);
-    return NextResponse.error();
+    return NextResponse.json(
+      { error: "An error occurred while processing the request" },
+      { status: 500 }
+    );
   }
 }
