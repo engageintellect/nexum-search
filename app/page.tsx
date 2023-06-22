@@ -60,7 +60,7 @@ export default function Home() {
 
     // try {
     //   // TODO: MOVE THIS TO THE SERVER
-    //   const pb = new PocketBase("http://45.56.88.245:8090");
+    //   const pb = new PocketBase("https://45.56.88.245");
     //   const data = {
     //     query: query,
     //     result: result, // This line may need modification
