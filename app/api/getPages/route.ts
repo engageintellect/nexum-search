@@ -7,8 +7,8 @@ export async function GET() {
   try {
     const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE_URL);
     const projects = await pb.collection("projects").getFullList({
-      sort: "-updated",
-      expand: "likes",
+      // sort: "-updated",
+      // expand: "likes",
     });
 
     const documentsDir = path.join(process.cwd(), "documents");
