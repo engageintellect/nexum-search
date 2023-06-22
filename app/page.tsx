@@ -5,12 +5,13 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PocketBase from "pocketbase";
 import Image from "next/image";
+import path from "path";
 
 // const searchHistory: string[] = [];
 
 export default function Home() {
   const [query, setQuery] = useState("");
-  const [result, setResult] = useState({ text: "", link: "" });
+  const [result, setResult] = useState({ text: "", link: "", source: "" });
   const [loading, setLoading] = useState(false);
 
   async function getPages() {
@@ -42,7 +43,7 @@ export default function Home() {
   }
   async function sendQuery() {
     if (!query) return;
-    setResult({ text: "", link: "" });
+    setResult({ text: "", link: "", source: "" });
     setLoading(true);
     try {
       const result = await fetch("/api/read", {
@@ -107,26 +108,49 @@ export default function Home() {
         <div className="mb-10">
           {loading && <ArrowPathIcon className="h-20 w-20 animate-spin" />}
           {result.text ? (
-            <div className="chat chat-start">
-              <div className="chat-image avatar">
-                <div className="w-10 rounded-full shadow-md">
-                  <Image
-                    src="https://github.com/engageintellect.png"
-                    width={200}
-                    height={200}
-                    alt="avatar"
-                  />
+            <div>
+              <div className="chat chat-start">
+                <div className="chat-image avatar">
+                  <div className="w-10 rounded-full shadow-md">
+                    <Image
+                      src="https://github.com/engageintellect.png"
+                      width={200}
+                      height={200}
+                      alt="avatar"
+                    />
+                  </div>
+                </div>
+                <div className="chat-header">
+                  Robot
+                  {/* <time className="text-xs opacity-50">{new Date}</time> */}
+                </div>
+                <div className="chat-bubble p-4">
+                  {result.text && <div>{result.text}</div>}
+                </div>
+                <div className="chat-footer opacity-50">
+                  {result.link && (
+                    <div>
+                      <a
+                        href={`http://localhost:5173/prjects/${path.basename(
+                          result.link
+                        )}`}
+                        target="_blank"
+                        className="text-primary"
+                      >
+                        {path.basename(result.link)}
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
-              <div className="chat-header">
-                Robot
-                {/* <time className="text-xs opacity-50">{new Date}</time> */}
-              </div>
-              <div className="chat-bubble p-4">
-                {result.text && <div>{result.text}</div>}
-              </div>
-              <div className="chat-footer opacity-50 mt-5">
-                {result.link && <div>{result.link}</div>}
+
+              <div className="p-2 sm:p-10 text-sm">
+                {result.source && (
+                  <div className="border-primary p-4">
+                    <span className="font-bold">Source:</span>
+                    <div dangerouslySetInnerHTML={{ __html: result.source }} />
+                  </div>
+                )}
               </div>
             </div>
           ) : (

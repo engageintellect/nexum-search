@@ -50,6 +50,7 @@ export const queryPineconeVectorStoreAndQueryLLM = async (
     return {
       text: result.text,
       link: queryResponse.matches[0].metadata.txtPath,
+      source: queryResponse.matches[0].metadata.pageContent,
     };
   } else {
     // 11. Log that there are no matches, so GPT-3 will not be queried
