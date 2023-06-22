@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import PocketBase from "pocketbase";
 import Image from "next/image";
 import path from "path";
+import { FaCircleNotch } from "react-icons/fa";
+import { LiaCircleNotchSolid } from "react-icons/lia";
 
 // const searchHistory: string[] = [];
 
@@ -104,7 +106,9 @@ export default function Home() {
 
       <main className="min-h-screen flex flex-col items-center max-w-3xl mx-auto border border-primary rounded shadow-lg -my-10 p-2 sm:p-10 bg-base-100">
         <div className="mb-10">
-          {loading && <ArrowPathIcon className="h-20 w-20 animate-spin" />}
+          {loading && (
+            <LiaCircleNotchSolid className="w-32 h-32 animate-spin" />
+          )}
           {result.text ? (
             <div>
               <div className="chat chat-start">
