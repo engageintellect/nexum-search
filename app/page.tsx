@@ -19,11 +19,8 @@ export default function Home() {
       const testing = await fetch("/api/getPages", {
         method: "GET",
       });
-      const responseText = await testing.text();
-      console.log("Response:", responseText);
 
       const json = await testing.json();
-      console.log("from client");
       console.log("result: ", json);
     } catch (err) {
       console.log("err:", err);
@@ -41,19 +38,21 @@ export default function Home() {
       console.log("err:", err);
     }
   }
+
   async function sendQuery() {
     if (!query) return;
     setResult({ text: "", link: "", source: "" });
     setLoading(true);
+
     try {
-      const result = await fetch("/api/read", {
+      const response = await fetch("/api/read", {
         method: "POST",
         body: JSON.stringify(query),
       });
-      const json = await result.json();
+
+      const json = await response.json();
       setResult(json.data);
       setLoading(false);
-      // searchHistory.push("hi");
     } catch (err) {
       console.log("err:", err);
       setLoading(false);
@@ -64,7 +63,7 @@ export default function Home() {
       const pb = new PocketBase("http://45.56.88.245:8090");
       const data = {
         query: query,
-        result: result,
+        result: result, // This line may need modification
       };
 
       const record = await pb.collection("searches").create(data);
