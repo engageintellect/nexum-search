@@ -131,15 +131,16 @@ export default function Home() {
                 </div>
                 <div className="chat-footer opacity-50">
                   {result.link && (
-                    <div>
+                    <div className="my-5">
                       <a
-                        href={`http://localhost:5173/prjects/${path.basename(
-                          result.link
-                        )}`}
+                        href={`${
+                          process.env.NEXT_PUBLIC_WIKI_URL
+                        }/pages/${path.basename(result.link, ".md")}`}
                         target="_blank"
-                        className="text-primary"
+                        className="btn btn-outline"
                       >
-                        {path.basename(result.link)}
+                        {/* {path.basename(result.link)} */}
+                        Read More
                       </a>
                     </div>
                   )}

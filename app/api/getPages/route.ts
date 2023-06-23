@@ -6,7 +6,7 @@ import path from "path";
 export async function GET() {
   try {
     const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE_URL);
-    const projects = await pb.collection("projects").getFullList({
+    const pages = await pb.collection("pages").getFullList({
       // sort: "-updated",
       // expand: "likes",
     });
@@ -17,15 +17,15 @@ export async function GET() {
     }
 
     const savedFiles: string[] = [];
-    for (const project of projects) {
-      console.log("project:", project);
-      const filePath = path.join(documentsDir, `${project.name}.md`);
-      const content = `---\n${Object.entries(project)
+    for (const page of pages) {
+      // console.log("page:", page);
+      const filePath = path.join(documentsDir, `${page.id}.md`);
+      const content = `---\n${Object.entries(page)
         .map(([key, value]) => `${key}: ${JSON.stringify(value)}`)
-        .join("\n")}\n---\n\n${project.description}`;
+        .join("\n")}\n---\n\n${page.description}`;
 
       await fs.promises.writeFile(filePath, content);
-      console.log(`Markdown file saved for project: ${project.collectionId}`);
+      // console.log(`Markdown file saved for page: ${page.collectionId}`);
 
       savedFiles.push(filePath);
     }

@@ -35,7 +35,6 @@ export const queryPineconeVectorStoreAndQueryLLM = async (
     const llm = new OpenAI({});
     const chain = loadQAStuffChain(llm);
     // 8. Extract and concatenate page content from matched documents
-    console.log(JSON.stringify(queryResponse.matches[0].metadata, null, 2));
     const concatenatedPageContent = queryResponse.matches
       .map((match) => match.metadata.pageContent)
       .join(" ");
@@ -47,6 +46,7 @@ export const queryPineconeVectorStoreAndQueryLLM = async (
     // 10. Log the answer
     // console.log(`Answer: ${JSON.stringify(metadata)}`);
     // return [result.text, queryResponse.matches[0].metadata.txtPath];
+    console.log("hehllloooo world", JSON.stringify(queryResponse));
     return {
       text: result.text,
       link: queryResponse.matches[0].metadata.txtPath,

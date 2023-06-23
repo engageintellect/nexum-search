@@ -1,8 +1,8 @@
 ---
 collectionId: "9ktkng9a95n6199"
-collectionName: "projects"
+collectionName: "pages"
+content: "about tailwindcss"
 created: "2023-06-10 00:28:57.829Z"
-description: "about tailwindcss"
 division: ""
 id: "s35p2wh9w4mj4w1"
 likes: []
@@ -16,4 +16,4 @@ user: "sc6y8t4lna2nizb"
 expand: {}
 ---
 
-about tailwindcss
+undefined
