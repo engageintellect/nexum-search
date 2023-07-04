@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import PocketBase from "pocketbase";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -9,6 +9,7 @@ import path from "path";
 import { LiaCircleNotchSolid } from "react-icons/lia";
 
 export default function Home() {
+  const inputRef = useRef<HTMLInputElement>(null); // Add type annotation for inputRef
   const [query, setQuery] = useState("");
   const [sentQuery, setSentQuery] = useState("");
   const [result, setResult] = useState({ text: "", link: "", source: "" });
@@ -38,6 +39,12 @@ export default function Home() {
       console.log("err:", err);
     }
   }
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus(); // Focus the input field on page load
+    }
+  }, []);
 
   useEffect(() => {
     async function addToSearches() {
@@ -96,6 +103,7 @@ export default function Home() {
             </p>
             <div className="flex gap-2 w-full">
               <input
+                ref={inputRef} // Add the ref to the input element
                 className="input border-primary w-full"
                 placeholder="search for anything..."
                 value={query}
