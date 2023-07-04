@@ -13,6 +13,7 @@ thumbnail: "nextjs_pZgBmLgz1F.png"
 updated: "2023-06-19 21:07:50.016Z"
 url: "https://nextjs.org"
 user: "8ti99kn9yavd7mb"
+verified: false
 expand: {}
 ---
 

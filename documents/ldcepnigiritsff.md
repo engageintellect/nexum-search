@@ -13,6 +13,7 @@ thumbnail: "lakers_2sDcl8mHlb.jpg"
 updated: "2023-06-15 03:28:04.392Z"
 url: "https://lalakers.com"
 user: "8ti99kn9yavd7mb"
+verified: false
 expand: {}
 ---
 

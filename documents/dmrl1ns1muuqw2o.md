@@ -13,6 +13,7 @@ thumbnail: "tedtalk_pMH6sj99bR.jpg"
 updated: "2023-06-17 06:40:24.593Z"
 url: "https://google.com"
 user: "8ti99kn9yavd7mb"
+verified: false
 expand: {}
 ---
 

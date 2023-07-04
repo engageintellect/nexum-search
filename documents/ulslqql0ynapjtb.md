@@ -10,9 +10,10 @@ name: "Palantir Technologies"
 tagline: "AI-Powered Operations, For Every Decision"
 tags: []
 thumbnail: "palantir_EfzGsXfjoA.jpg"
-updated: "2023-06-24 09:21:07.810Z"
+updated: "2023-07-03 04:51:16.659Z"
 url: "https://palantir.com"
 user: "8ti99kn9yavd7mb"
+verified: true
 expand: {}
 ---
 

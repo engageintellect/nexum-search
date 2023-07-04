@@ -13,6 +13,7 @@ thumbnail: "vercel_logo_5EnV1qCo2T.webp"
 updated: "2023-06-22 06:04:52.521Z"
 url: "https://vercel.com"
 user: "8ti99kn9yavd7mb"
+verified: false
 expand: {}
 ---
 

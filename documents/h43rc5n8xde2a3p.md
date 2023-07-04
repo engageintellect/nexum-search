@@ -10,9 +10,10 @@ name: "Quantum Computing"
 tagline: "We're not even sure how it works"
 tags: []
 thumbnail: "quantumcomputer_Mi3B4kUcKl.jpg"
-updated: "2023-06-17 05:50:48.121Z"
+updated: "2023-07-03 05:35:21.361Z"
 url: "https://google.com"
 user: "8ti99kn9yavd7mb"
+verified: false
 expand: {}
 ---
 

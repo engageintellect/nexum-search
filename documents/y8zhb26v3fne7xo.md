@@ -10,9 +10,10 @@ name: "Artificial General Intelligence (AGI)"
 tagline: "Skynet otw"
 tags: ["v279zcrn3qjme3j","b0uoqk121pmlyfi"]
 thumbnail: "modern_tech_5szoAYiOq5.png"
-updated: "2023-06-20 20:02:13.818Z"
+updated: "2023-07-03 05:02:20.121Z"
 url: "https://google.com"
 user: "8ti99kn9yavd7mb"
+verified: true
 expand: {}
 ---
 

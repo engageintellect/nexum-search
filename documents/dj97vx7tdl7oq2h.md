@@ -13,6 +13,7 @@ thumbnail: "svelte_feature_image_lM8lsBcHNJ.png"
 updated: "2023-06-22 09:33:32.372Z"
 url: "http://www.google.com"
 user: "jbrbdjk14w9tqcn"
+verified: false
 expand: {}
 ---
 
