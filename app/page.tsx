@@ -10,6 +10,7 @@ import { LiaCircleNotchSolid } from "react-icons/lia";
 
 export default function Home() {
   const [query, setQuery] = useState("");
+  const [sentQuery, setSentQuery] = useState("");
   const [result, setResult] = useState({ text: "", link: "", source: "" });
   const [loading, setLoading] = useState(false);
 
@@ -72,7 +73,8 @@ export default function Home() {
 
       const json = await response.json();
       setResult(json.data);
-
+      setSentQuery(query);
+      // setQuery("");
       setLoading(false);
     } catch (err) {
       console.log("err:", err);
@@ -83,7 +85,7 @@ export default function Home() {
   return (
     <div>
       <Nav />
-      <div className="hero bg-gradient-to-b from-sky-800 to-slate-800 py-20">
+      <div className="hero bg-gradient-to-b from-gray-900 to-gray-600 py-20">
         <div className="hero-content text-center">
           <div className="max-w-lg">
             <div className="text-6xl font-semibold text-white">
@@ -132,6 +134,13 @@ export default function Home() {
 
           {result.text ? (
             <div>
+              <div className="chat chat-end">
+                <div className="chat-header">Me</div>
+                <div className="chat-bubble bg-purple-500 shadow-lg p-4">
+                  {sentQuery}
+                </div>
+              </div>
+
               <div className="chat chat-start">
                 <div className="chat-image avatar">
                   <div className="w-10 rounded-full shadow-md">
@@ -150,7 +159,7 @@ export default function Home() {
                 <div className="chat-bubble shadow-lg p-4">
                   {result.text && <div>{result.text}</div>}
                 </div>
-                <div className="chat-footer opacity-50">
+                <div className="chat-footer">
                   {result.link && (
                     <div className="my-5">
                       <a
@@ -168,11 +177,13 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="p-2 sm:p-10 text-sm">
+              <div className="divider"></div>
+
+              <div className="p-2 sm:px-10 text-sm">
                 {result.source && (
                   <>
                     <div className="border-primary p-4">
-                      <span className="font-bold">Source:</span>
+                      <span className="font-bold">Response Source:</span>
                       <div
                         dangerouslySetInnerHTML={{ __html: result.source }}
                       />
