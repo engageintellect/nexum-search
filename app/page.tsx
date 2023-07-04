@@ -44,7 +44,7 @@ export default function Home() {
       try {
         const pb = new PocketBase("https://engage-dev.com");
         const data = {
-          query: query,
+          query: sentQuery,
           result: result.text,
         };
 
@@ -74,8 +74,8 @@ export default function Home() {
       const json = await response.json();
       setResult(json.data);
       setSentQuery(query);
-      // setQuery("");
       setLoading(false);
+      setQuery("");
     } catch (err) {
       console.log("err:", err);
       setLoading(false);
