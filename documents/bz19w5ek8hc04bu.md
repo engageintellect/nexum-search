@@ -3,7 +3,7 @@ collectionId: "9ktkng9a95n6199"
 collectionName: "pages"
 content: "<p>Testing</p>"
 created: "2023-06-21 06:33:10.846Z"
-division: "CORP"
+division: ["CORP"]
 id: "bz19w5ek8hc04bu"
 likes: []
 name: "Ajay test project"

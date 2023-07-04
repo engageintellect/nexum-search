@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -8,8 +9,6 @@ import Image from "next/image";
 import path from "path";
 import { FaCircleNotch } from "react-icons/fa";
 import { LiaCircleNotchSolid } from "react-icons/lia";
-
-// const searchHistory: string[] = [];
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -41,7 +40,29 @@ export default function Home() {
     }
   }
 
-  async function sendQuery() {
+  useEffect(() => {
+    async function addToSearches() {
+      try {
+        const pb = new PocketBase("https://engage-dev.com");
+        const data = {
+          query: query,
+          result: result.text,
+        };
+
+        const record = await pb.collection("searches").create(data);
+        console.log("search record added to PocketBase...");
+      } catch (err) {
+        console.log("err:", err);
+      }
+    }
+
+    if (result.text) {
+      addToSearches();
+    }
+  }, [result]);
+
+  async function sendQuery(event) {
+    if (event.key !== "Enter") return;
     if (!query) return;
     setResult({ text: "", link: "", source: "" });
     setLoading(true);
@@ -54,25 +75,12 @@ export default function Home() {
 
       const json = await response.json();
       setResult(json.data);
+
       setLoading(false);
     } catch (err) {
       console.log("err:", err);
       setLoading(false);
     }
-
-    // try {
-    //   const pb = new PocketBase("https://45.56.88.245");
-    //   const data = {
-    //     query: query,
-    //     result: result, // This line may need modification
-    //   };
-
-    //   const record = await pb.collection("searches").create(data);
-    //   console.log("search records added to pocketbase...");
-    // } catch (err) {
-    //   console.log("err:", err);
-    //   setLoading(false);
-    // }
   }
 
   return (
@@ -93,6 +101,7 @@ export default function Home() {
                 className="input border-primary w-full"
                 placeholder="search for anything..."
                 onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={sendQuery}
               />
               <button className="btn btn-primary" onClick={sendQuery}>
                 Submit
@@ -107,8 +116,17 @@ export default function Home() {
       <main className="min-h-screen flex flex-col items-center max-w-3xl mx-auto border border-primary rounded shadow-lg -my-10 p-2 sm:p-10 bg-base-100">
         <div className="mb-10">
           {loading && (
-            <LiaCircleNotchSolid className="w-32 h-32 animate-spin" />
+            <>
+              <div className="flex flex-col items-center">
+                <div>
+                  <LiaCircleNotchSolid className="w-32 h-32 animate-spin" />
+                </div>
+
+                <div className="text-lg">Thinking...</div>
+              </div>
+            </>
           )}
+
           {result.text ? (
             <div>
               <div className="chat chat-start">
@@ -149,10 +167,14 @@ export default function Home() {
 
               <div className="p-2 sm:p-10 text-sm">
                 {result.source && (
-                  <div className="border-primary p-4">
-                    <span className="font-bold">Source:</span>
-                    <div dangerouslySetInnerHTML={{ __html: result.source }} />
-                  </div>
+                  <>
+                    <div className="border-primary p-4">
+                      <span className="font-bold">Source:</span>
+                      <div
+                        dangerouslySetInnerHTML={{ __html: result.source }}
+                      />
+                    </div>
+                  </>
                 )}
               </div>
             </div>

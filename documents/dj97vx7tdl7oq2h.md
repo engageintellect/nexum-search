@@ -3,7 +3,7 @@ collectionId: "9ktkng9a95n6199"
 collectionName: "pages"
 content: "<p>Test description</p>"
 created: "2023-06-22 09:28:52.213Z"
-division: "BTS"
+division: ["BTS"]
 id: "dj97vx7tdl7oq2h"
 likes: []
 name: "Aj test"
