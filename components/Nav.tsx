@@ -20,7 +20,7 @@ function Nav() {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a href="https://project-nexum.vercel.app" target="_blank">
+              <a href={process.env.NEXT_PUBLIC_WIKI_URL} target="_blank">
                 Wiki
               </a>
             </li>
@@ -29,7 +29,10 @@ function Nav() {
               <a href="/about">About</a>
             </li>
             <li>
-              <a href="https://project-nexum.vercel.app/ai" target="_blank">
+              <a
+                href={`${process.env.NEXT_PUBLIC_WIKI_URL}/ai`}
+                target="_blank"
+              >
                 ET-GPT
               </a>
             </li>
