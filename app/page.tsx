@@ -1,13 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowPathIcon } from "@heroicons/react/24/solid";
+import PocketBase from "pocketbase";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import PocketBase from "pocketbase";
 import Image from "next/image";
 import path from "path";
-import { FaCircleNotch } from "react-icons/fa";
 import { LiaCircleNotchSolid } from "react-icons/lia";
 
 export default function Home() {
@@ -85,15 +83,14 @@ export default function Home() {
   return (
     <div>
       <Nav />
-      <div className="hero bg-gradient-to-b from-purple-900 to-slate-800 py-20">
+      <div className="hero bg-gradient-to-b from-sky-800 to-slate-800 py-20">
         <div className="hero-content text-center">
-          <div className="max-w-md">
+          <div className="max-w-lg">
             <div className="text-6xl font-semibold text-white">
               Ne<span className="text-purple-500">x</span>um
             </div>
-            <p className="py-6 text-white">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi.
+            <p className="py-3 text-white text-lg">
+              You have questions, we have answers.
             </p>
             <div className="flex gap-2 w-full">
               <input
@@ -126,7 +123,9 @@ export default function Home() {
                   <LiaCircleNotchSolid className="w-32 h-32 animate-spin" />
                 </div>
 
-                <div className="text-lg">Thinking...</div>
+                <div className="animate-bounce flex flex-col items-center">
+                  <div className="text-lg">Thinking...</div>
+                </div>
               </div>
             </>
           )}
@@ -137,7 +136,7 @@ export default function Home() {
                 <div className="chat-image avatar">
                   <div className="w-10 rounded-full shadow-md">
                     <Image
-                      src="https://github.com/engageintellect.png"
+                      src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2274&q=80"
                       width={200}
                       height={200}
                       alt="avatar"
@@ -148,7 +147,7 @@ export default function Home() {
                   Robot
                   {/* <time className="text-xs opacity-50">{new Date}</time> */}
                 </div>
-                <div className="chat-bubble p-4">
+                <div className="chat-bubble shadow-lg p-4">
                   {result.text && <div>{result.text}</div>}
                 </div>
                 <div className="chat-footer opacity-50">
