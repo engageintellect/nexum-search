@@ -61,8 +61,7 @@ export default function Home() {
     }
   }, [result]);
 
-  async function sendQuery(event) {
-    if (event.key !== "Enter") return;
+  async function sendQuery() {
     if (!query) return;
     setResult({ text: "", link: "", source: "" });
     setLoading(true);
@@ -100,8 +99,13 @@ export default function Home() {
               <input
                 className="input border-primary w-full"
                 placeholder="search for anything..."
+                value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={sendQuery}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    sendQuery();
+                  }
+                }}
               />
               <button className="btn btn-primary" onClick={sendQuery}>
                 Submit
