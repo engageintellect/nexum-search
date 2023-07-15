@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import path from "path";
 import { LiaCircleNotchSolid } from "react-icons/lia";
+import { FaSearch } from "react-icons/fa";
 
 export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null); // Add type annotation for inputRef
@@ -95,28 +96,33 @@ export default function Home() {
       <div className="hero bg-gradient-to-b from-gray-900 to-gray-600 py-20">
         <div className="hero-content text-center">
           <div className="max-w-lg">
-            <div className="text-6xl font-semibold text-white">
+            <div className="text-7xl font-semibold text-white">
               Ne<span className="text-purple-500">x</span>um
             </div>
             <p className="py-3 text-white text-lg">
               You have questions, we have answers.
             </p>
-            <div className="flex gap-2 w-full">
-              <input
-                ref={inputRef} // Add the ref to the input element
-                className="input border-primary w-full"
-                placeholder="search for anything..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    sendQuery();
-                  }
-                }}
-              />
-              <button className="btn btn-primary" onClick={sendQuery}>
-                Submit
-              </button>
+            <div className="bg-white flex gap-2 items-center border border-primary rounded">
+              <div>
+                <FaSearch className="text-primary h-7 w-7 pl-2" />
+              </div>
+              <div className="flex gap-2 w-full">
+                <input
+                  ref={inputRef} // Add the ref to the input element
+                  className="w-full focus:outline-none"
+                  placeholder="search for anything..."
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      sendQuery();
+                    }
+                  }}
+                />
+                <button className="btn btn-primary" onClick={sendQuery}>
+                  Submit
+                </button>
+              </div>
             </div>
           </div>
         </div>
