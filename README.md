@@ -40,13 +40,3 @@ git clone https://github.com/engageintellect/pinecone-gpt.git
 pnpm run dev
 ```
 
-# pinecone-gpt
-
-# pinecone-gpt
-
-# pinecone-gpt
-
-OPENAI_API_KEY=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
-PINECONE_API_KEY=245b93a9-40fb-40c2-98f1-3e2be82d4c65
-PINECONE_ENVIRONMENT=us-west1-gcp-free
-POCKETBASE_URL=http://45.56.88.245:8090
