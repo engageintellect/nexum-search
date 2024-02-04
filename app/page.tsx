@@ -93,13 +93,13 @@ export default function Home() {
   return (
     <div>
       <Nav />
-      <div className="hero bg-gradient-to-b from-gray-900 to-gray-600 py-20">
+      <div className="hero bg-gradient-to-b from-gray-900 to-gray-600 pb-20 pt-10">
         <div className="hero-content text-center">
           <div className="max-w-lg">
-            <div className="text-7xl font-semibold text-white">
+            <div className="text-7xl font-semibold text-white drop-shadow">
               Ne<span className="text-purple-500">x</span>um
             </div>
-            <p className="py-3 text-white text-lg">
+            <p className="py-3 text-white text-lg drop-shadow">
               You have questions, we have answers.
             </p>
             <div className="bg-white flex gap-2 items-center border border-primary rounded">
@@ -119,7 +119,7 @@ export default function Home() {
                     }
                   }}
                 />
-                <button className="btn btn-primary" onClick={sendQuery}>
+                <button className="btn btn-primary rounded-l-none hover:shadow" onClick={sendQuery}>
                   Submit
                 </button>
               </div>
@@ -222,12 +222,15 @@ export default function Home() {
 
         {/* consider removing this button from the UI once the embeddings are created ... */}
 
+
+
+
         <div className="flex gap-2">
-          <button className="btn " onClick={createIndexAndEmbeddings}>
+          <button className="btn" onClick={createIndexAndEmbeddings}>
             Index Docs
           </button>
 
-          <button className="btn " onClick={getPages}>
+          <button className="btn" onClick={getPages}>
             Get Pages
           </button>
         </div>

@@ -2,9 +2,9 @@ import { FaBars } from "react-icons/fa";
 
 function Nav() {
   return (
-    <div className="navbar bg-base-100 max-w-5xl mx-auto">
+    <div className="navbar bg-base-100 max-w-3xl mx-auto">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl" href="/">
+        <a className="btn btn-outline normal-case text-xl drop-shadow shadow" href="/">
           <div>
             Ne<span className="text-purple-500">x</span>um
           </div>
